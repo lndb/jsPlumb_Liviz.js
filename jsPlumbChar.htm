@@ -1,0 +1,497 @@
+﻿<!DOCTYPE html>
+<HTML>
+<HEAD>
+<TITLE>jsPlumb & Liviz.js: Character Relation Diagram</TITLE>
+<META content="text/html;charset=utf-8" http-equiv="content-type">
+<LINK rel="stylesheet" href="jsPlumbChar.css">
+<LINK rel="stylesheet" href="jquery/themes/smoothness/jquery-ui-1.9.2.custom.min.css">
+
+<style>
+.component {
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+	background-color: white;
+	color: black;
+	font-family: helvetica;
+	padding: 0.5em;
+}
+
+.window {
+	border:2px solid #346789;
+ 	/*width:14em;
+ 	height:20em;*/
+	z-index:20;
+	position:absolute;
+	font-size:0.8em;
+	border-radius:1em;
+	/*margin:1em;*/
+}
+
+.label {
+	border: 1px solid #346789;
+	padding: 8px;
+	padding: 8px;
+}
+
+.label_protagonist {
+	border: 1px solid #CC4444;
+	padding: 8px;
+	padding: 8px;
+}
+
+.label_main {
+	border: 1px solid #4444CC;
+	padding: 8px;
+	padding: 8px;
+}
+
+.label_other {
+	border: 1px solid #44CC44;
+	padding: 8px;
+	padding: 8px;
+}
+
+.label_protagonist:hover {
+	border-color: #CC8888;
+}
+
+.label_main:hover {
+	border-color: #8888CC;
+}
+
+.label_other:hover {
+	border-color: #88CC88;
+}
+
+.label:hover {
+	border-color: #5d94a6;
+}
+
+.l1 {
+	font-size: 13px;
+}
+
+.close_box {
+    background: gray;
+    color: black;
+    font-weight: bold;
+    padding: 2px 5px;
+    display: inline;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#window30 { top:32em; left:2em; border-color: #4444CC; text-align: center;}
+#window32 { top:2em; left:2em; border-color: #CC4444; text-align: center;}
+#window28 { top:32em; left:32em; border-color: #4444CC; text-align: center;}
+#window29 { top:32em; left:62em; border-color: #4444CC; text-align: center;}
+#window14 { top:64em; left:2em; border-color: #44CC44; text-align: center;}
+#window31 { top:64em; left:32em; border-color: #44CC44; text-align: center;}
+
+._jsPlumb_connector { z-index:4; }
+._jsPlumb_endpoint { z-index:5; }
+._jsPlumb_overlay { z-index:6; }
+.hl { border:3px solid red; }
+
+/* SVG styles.  Apart from the fact that SVG uses far less memory than Canvas, you can style it!   
+.c1 path, .l1arrow {
+	stroke-dasharray:40 20 40;
+	stroke-linecap:round;
+	stroke-opacity:0.5;
+	fill-opacity:0.5;
+}
+*/
+</style>
+
+<script type="text/javascript">
+    // Google Analytics
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37360375-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+</HEAD>
+<BODY onload="w_launch();">
+
+<DIV style="position: absolute;">
+	<DIV id="char">
+        <DIV id='window30' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>アウロラ</STRONG><BR>Aurora<BR><img style='margin-top: 5px; width: 105px; height: 150px;' src='images/no-image.jpg'></DIV>
+<DIV id='window32' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>尊藤 由紀</STRONG><BR>Takatou Yuki<BR><img style='margin-top: 5px; width: 105px; height: 150px;' src='images/no-image.jpg'></DIV>
+<DIV id='window28' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>しろ</STRONG><BR>Shiro<BR><img style='margin-top: 5px; width: 105px; height: 150px;' src='images/no-image.jpg'></DIV>
+<DIV id='window29' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>橘 姫花</STRONG><BR>Tachibana Himeka<BR><img style='margin-top: 5px; width: 105px; height: 150px;' src='images/no-image.jpg'></DIV>
+<DIV id='window14' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>星月 そら</STRONG><BR>Hoshizuki Sora<BR><img style='margin-top: 5px; width: 105px; height: 150px;' src='images/no-image.jpg'></DIV>
+<DIV id='window31' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>吾妻 愛鈴</STRONG><BR>Azuma Airi<BR><img style='margin-top: 5px; width: 105px; height: 150px;' src='images/no-image.jpg'></DIV>
+	</DIV>
+</DIV>
+
+<DIV id="explanation">
+    <div class="close_box">X</div>
+    <P>Two online examples can be found here:<br>
+	&nbsp;<a href="http://lndb.info/light_novel/diagram/Akikan!">Akikan!</a><br>
+	&nbsp;<a href="http://lndb.info/light_novel/diagram/Strawberry_Panic!">Strawberry_Panic!</a>
+	</P>
+</DIV>
+
+<SCRIPT type="text/javascript" src="jquery/jquery-1.8.3.min.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="jquery/jquery-ui-1.9.2.custom.min.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="jquery/jquery.ui.touch-punch.min.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="jsPlumb/jquery.jsPlumb-1.3.16-all-min.js"></SCRIPT>
+
+<script type="text/javascript">
+/*
+	this is the JS for the main jsPlumb.
+*/
+(function() {
+    $(document).on('click','.close_box',function(){
+        $(this).parent().fadeTo(300,0,function(){
+            $(this).remove();
+        });
+    });
+
+	jsPlumb.List = {
+
+		init : function() {
+			var bod = document.body,
+				renderModeString = '<h5>Render Mode:</h5><a href="javascript:void(0)" class="rmode" mode="svg">SVG</a>&nbsp;|&nbsp;<a href="javascript:void(0)" class="selected rmode" mode="canvas">Canvas</a>&nbsp;|&nbsp;<a href="javascript:void(0)" class="rmode" mode="vml">VML</a>';
+
+			var	menuString = '<div class="menu"><a href="http://www.jsplumb.org">jsPlumb</a> | <a href="http://ushiroad.com/jsviz/">Liviz.js</a>';
+		
+			var d = document.createElement("div");
+			d.className = "renderMode";
+			d.innerHTML = renderModeString;
+			bod.appendChild(d);
+		
+			var m = document.createElement("div");
+			m.className = "menu";
+			m.innerHTML = menuString;
+			bod.appendChild(m);			
+		}
+	};
+
+	window.jsPlumbChar = {
+		
+		init : function() {
+			
+			jsPlumb.importDefaults({
+				DragOptions : { cursor: "pointer", zIndex:2000 },
+				HoverClass: "connector-hover"
+			});
+	
+			var hoverPaintStyle = { strokeStyle: "#7ec3d9" };		// hover paint style is merged on normal style, so you 
+			                                                        // don't necessarily need to specify a lineWidth
+
+                                                var connection_32_14 = jsPlumb.connect({
+                                        source:"window32",
+                                        target:"window14",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#346789"},
+                                        hoverPaintStyle:{strokeStyle:"#5d94a6"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        endpointsOnTop:true,
+                                        overlays:[ ["Label", {
+                                            cssClass: "l1 component label",
+                                            label: "Childhood-friend, Classmate",
+                                            location: 0.5,
+                                            events: {
+                                                "click":function(label, evt) {
+                                                    $("#32_14_dialog").dialog().dialog('option', 'position', [evt.clientX, evt.clientY]);
+                                                    return false;
+                                                }
+                                            }
+                                        }],
+                                            ["Arrow", {
+                                                location:1
+                                            }],
+                                            ["Arrow", {
+                                                location:0,
+                                                direction:-1
+                                            }]
+                                        ]});
+                                                var stateMachineConnectorProtagonist_32_28 = {
+                                        connector:"StateMachine",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#CC4444"},
+                                        hoverPaintStyle:{strokeStyle:"#CC8888"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        overlays:[
+                                            ["Label", {
+                                                cssClass: "l1 component label_protagonist",
+                                                label: "???",
+                                                location: 0.7,
+                                                events: {
+                                                    "click":function(label, evt) {
+                                                        $("#32_28_dialog").dialog().dialog('option', 'position', [evt.clientX, evt.clientY]);
+                                                        return false;
+                                                    }
+                                                }
+                                            }],
+                                            ["PlainArrow", {
+                                                location:1,
+                                                width:20,
+                                                length:12
+                                            }]
+                                        ]
+                                    };
+
+                                    jsPlumb.connect({
+                                        source:"window32",
+                                        target:"window28"
+                                    }, stateMachineConnectorProtagonist_32_28);
+                                                var stateMachineConnectorProtagonist_32_29 = {
+                                        connector:"StateMachine",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#CC4444"},
+                                        hoverPaintStyle:{strokeStyle:"#CC8888"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        overlays:[
+                                            ["Label", {
+                                                cssClass: "l1 component label_protagonist",
+                                                label: "???",
+                                                location: 0.7,
+                                                events: {
+                                                    "click":function(label, evt) {
+                                                        $("#32_29_dialog").dialog().dialog('option', 'position', [evt.clientX, evt.clientY]);
+                                                        return false;
+                                                    }
+                                                }
+                                            }],
+                                            ["PlainArrow", {
+                                                location:1,
+                                                width:20,
+                                                length:12
+                                            }]
+                                        ]
+                                    };
+
+                                    jsPlumb.connect({
+                                        source:"window32",
+                                        target:"window29"
+                                    }, stateMachineConnectorProtagonist_32_29);
+                                                var stateMachineConnectorProtagonist_32_30 = {
+                                        connector:"StateMachine",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#CC4444"},
+                                        hoverPaintStyle:{strokeStyle:"#CC8888"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        overlays:[
+                                            ["Label", {
+                                                cssClass: "l1 component label_protagonist",
+                                                label: "???",
+                                                location: 0.7,
+                                                events: {
+                                                    "click":function(label, evt) {
+                                                        $("#32_30_dialog").dialog().dialog('option', 'position', [evt.clientX, evt.clientY]);
+                                                        return false;
+                                                    }
+                                                }
+                                            }],
+                                            ["PlainArrow", {
+                                                location:1,
+                                                width:20,
+                                                length:12
+                                            }]
+                                        ]
+                                    };
+
+                                    jsPlumb.connect({
+                                        source:"window32",
+                                        target:"window30"
+                                    }, stateMachineConnectorProtagonist_32_30);
+                                                var connection_32_31 = jsPlumb.connect({
+                                        source:"window32",
+                                        target:"window31",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#346789"},
+                                        hoverPaintStyle:{strokeStyle:"#5d94a6"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        endpointsOnTop:true,
+                                        overlays:[ ["Label", {
+                                            cssClass: "l1 component label",
+                                            label: "Friends, Classmates, and so...",
+                                            location: 0.5,
+                                            events: {
+                                                "click":function(label, evt) {
+                                                    $("#32_31_dialog").dialog().dialog('option', 'position', [evt.clientX, evt.clientY]);
+                                                    return false;
+                                                }
+                                            }
+                                        }],
+                                            ["Arrow", {
+                                                location:1
+                                            }],
+                                            ["Arrow", {
+                                                location:0,
+                                                direction:-1
+                                            }]
+                                        ]});
+                                                var stateMachineConnectorMain_30_32 = {
+                                        connector:"StateMachine",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#4444CC"},
+                                        hoverPaintStyle:{strokeStyle:"#8888CC"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        overlays:[
+                                            ["Label", {
+                                                cssClass: "l1 component label_main",
+                                                label: "in love",
+                                                location: 0.7,
+                                                events: {
+                                                    "click":function(label, evt) {
+                                                        $("#30_32_dialog").dialog().dialog('option', 'position', [evt.clientX, evt.clientY]);
+                                                        return false;
+                                                    }
+                                                }
+                                            }],
+                                            ["PlainArrow", {
+                                                location:1,
+                                                width:20,
+                                                length:12
+                                            }]
+                                        ]
+                                    };
+
+                                    jsPlumb.connect({
+                                        source:"window30",
+                                        target:"window32"
+                                    }, stateMachineConnectorMain_30_32);
+                                                var stateMachineConnectorMain_28_32 = {
+                                        connector:"StateMachine",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#4444CC"},
+                                        hoverPaintStyle:{strokeStyle:"#8888CC"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        overlays:[
+                                            ["Label", {
+                                                cssClass: "l1 component label_main",
+                                                label: "in love",
+                                                location: 0.7,
+                                                events: {
+                                                    "click":function(label, evt) {
+                                                        $("#28_32_dialog").dialog().dialog('option', 'position', [evt.clientX, evt.clientY]);
+                                                        return false;
+                                                    }
+                                                }
+                                            }],
+                                            ["PlainArrow", {
+                                                location:1,
+                                                width:20,
+                                                length:12
+                                            }]
+                                        ]
+                                    };
+
+                                    jsPlumb.connect({
+                                        source:"window28",
+                                        target:"window32"
+                                    }, stateMachineConnectorMain_28_32);
+                                                var stateMachineConnectorMain_29_32 = {
+                                        connector:"StateMachine",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#4444CC"},
+                                        hoverPaintStyle:{strokeStyle:"#8888CC"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        overlays:[
+                                            ["Label", {
+                                                cssClass: "l1 component label_main",
+                                                label: "in love",
+                                                location: 0.7,
+                                                events: {
+                                                    "click":function(label, evt) {
+                                                        $("#29_32_dialog").dialog().dialog('option', 'position', [evt.clientX, evt.clientY]);
+                                                        return false;
+                                                    }
+                                                }
+                                            }],
+                                            ["PlainArrow", {
+                                                location:1,
+                                                width:20,
+                                                length:12
+                                            }]
+                                        ]
+                                    };
+
+                                    jsPlumb.connect({
+                                        source:"window29",
+                                        target:"window32"
+                                    }, stateMachineConnectorMain_29_32);
+            
+			// jsplumb event handlers
+	
+			// context menu (right click) on any component.
+			jsPlumb.bind("contextmenu", function(component, originalEvent) {
+                originalEvent.preventDefault();
+                return false;
+            });
+			
+			// make all .window divs draggable
+			jsPlumb.draggable(jsPlumb.getSelector(".window"));
+            
+		}
+	};	
+})();
+</SCRIPT>
+
+<!-- helper code -->
+<SCRIPT type="text/javascript" src="jsPlumb/helper-jquery.js"></SCRIPT>
+
+<!-- Liviz.js code -->
+<script type="text/javascript" src="Liviz.js/global-util.js?v=2"></script>
+<script type="text/javascript" src="Liviz.js/workered.js?v=2"></script>
+<script type="text/javascript" src="Liviz.js/progress-view.js?v=2"></script>
+<script type="text/javascript" src="Liviz.js/progress-model.js?v=2"></script>
+<script type="text/javascript" src="Liviz.js/stopgo.js?v=2"></script>
+
+<textarea id="dot-src" style="display: none;">
+digraph chargraph {
+	node[shape=box];
+	node[margin=0,0,width=4,height=5];
+
+	window32 -> window14 [dir="both"];
+	window32 -> window28;
+	window32 -> window29;
+	window32 -> window30;
+	window32 -> window31 [dir="both"];
+	window30 -> window32;
+	window28 -> window32;
+	window29 -> window32;
+	{rank=same; window32;}
+	{rank=same; window30; window28; window29;}
+}
+</textarea>
+
+<div id="30_32_dialog" title="Relation of Aurora to Takatou Yuki" style="display: none;">
+    <p>in love</p>
+</div>
+<div id="28_32_dialog" title="Relation of Shiro to Takatou Yuki" style="display: none;">
+    <p>in love</p>
+</div>
+<div id="29_32_dialog" title="Relation of Tachibana Himeka to Takatou Yuki" style="display: none;">
+    <p>in love</p>
+</div>
+<div id="32_14_dialog" title="Relation between Takatou Yuki and Hoshizuki Sora" style="display: none;">
+    <p>Childhood-friend, Classmate</p>
+</div>
+<div id="32_28_dialog" title="Relation of Takatou Yuki to Shiro" style="display: none;">
+    <p>???</p>
+</div>
+<div id="32_29_dialog" title="Relation of Takatou Yuki to Tachibana Himeka" style="display: none;">
+    <p>???</p>
+</div>
+<div id="32_30_dialog" title="Relation of Takatou Yuki to Aurora" style="display: none;">
+    <p>???</p>
+</div>
+<div id="32_31_dialog" title="Relation between Takatou Yuki and Azuma Airi" style="display: none;">
+    <p>Friends, Classmates, and some more relation info.</p>
+</div>
+
+</BODY>
+</HTML>
