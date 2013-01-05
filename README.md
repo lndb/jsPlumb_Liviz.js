@@ -12,11 +12,11 @@ All changes were done to the Liviz.js code, and are:
 
 This combination was worked on for the [LNDB.info](http://lndb.info/) site as a character relation diagram feature.
 
-# jsPlumb
+## jsPlumb
 jsPlumb provides a means for a developer to visually connect elements on their web pages. It uses SVG or 
 Canvas in modern browsers, and VML on IE 8 and below.
 
-# Liviz.js
+## Liviz.js
 An interactive Graphviz in javascript.
 
 ## jsPlumb & Liviz.js demo
