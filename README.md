@@ -10,7 +10,7 @@ All changes were done to the Liviz.js code, and are:
 - After getting the new positions of the elements, updating the elements with these positions, and redrawing the connectors (since the connectors are not updated after the divs are computationally moved).
 - The "em-dotgen.js" is pretty big, so it was minified.
 
-This combination was worked on for the [LNDB.info](http://lndb.info/) site as a character relation diagram feature.
+This combination was worked on for the [LNDB.info](http://lndb.info/) site as a "character relation diagram" feature.
 
 ## jsPlumb
 jsPlumb provides a means for a developer to visually connect elements on their web pages. It uses SVG or 
