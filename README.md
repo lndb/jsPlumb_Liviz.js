@@ -21,7 +21,7 @@ An interactive Graphviz in javascript.
 
 ## jsPlumb & Liviz.js demo
 - [Akikan! character relation diagram](http://lndb.info/light_novel/diagram/Akikan!)
-- [Strawberry_Panic! character relation diagram](http://lndb.info/light_novel/diagram/Strawberry_Panic!)
+- [Strawberry Panic! character relation diagram](http://lndb.info/light_novel/diagram/Strawberry_Panic!)
 
 ## jsPlumb's License
 All 1.x.x versions of jsPlumb are dual-licensed under both MIT and GPL version 2.
