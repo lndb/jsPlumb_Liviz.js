@@ -66,17 +66,21 @@
 	StopGo.Controller.prototype = {
 		makeFlagBlobs: function() {
 			var builder1 = getBlobBuilder();
-			if (!builder1) {
-				return;
-			}
+            var builder2 = getBlobBuilder();
 
-			builder1.append("RUN ");
+            if(!builder1)
+            {
+                this.blobRUN = new Blob(['RUN '], {type: 'text/plain'});
+                this.blobSTOP = new Blob(['STOP'], {type: 'text/plain'});
+            }
+            else
+            {
+                builder1.append("RUN ");
+                builder2.append("STOP");
 
-			var builder2 = getBlobBuilder();
-			builder2.append("STOP");
-
-			this.blobRUN  = builder1.getBlob('text/plain');
-			this.blobSTOP = builder2.getBlob('text/plain');
+                this.blobRUN  = builder1.getBlob('text/plain');
+                this.blobSTOP = builder2.getBlob('text/plain');
+            }
 		},
 
 		run: function() {
