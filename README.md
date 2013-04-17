@@ -12,6 +12,20 @@ All changes were done to the Liviz.js code, and are:
 
 This combination was worked on for the [LNDB.info](http://lndb.info/) site as a "character relation diagram" feature.
 
+Update:
+
+I have re-compiled GraphViz's code for the sfdp layout engine. The source code has been added under the src folder. Follow the same steps mentioned [here](https://github.com/gyuque/livizjs) to compile the code...
+
+There are currently two available layout engines:
+- [dot](http://www.graphviz.org/pdf/dot.1.pdf) (via the em-dotgen.min.js javascript file)
+- [sfdp](http://www.graphviz.org/pdf/sfdp.1.pdf) (via the em-sfdpgen.min.js javascript file)
+
+The example here uses the dot layout engine, but to use the sfdp layout engine follow these steps:
+- In the jsPlumbChar.htm file, change the content of the div with the id "layout-engine" from dot to sfdp, and then disable the textarea that's right after it, and enable the disabled textarea that follows.
+- In the main.js file, change the value of the LAYOUT_ENGINE variable from dot to sfdp.
+
+More info at the [LNDB.info forum](http://forums.lndb.info/showthread.php?tid=43&pid=185#pid185).
+
 ## jsPlumb
 jsPlumb provides a means for a developer to visually connect elements on their web pages. It uses SVG or 
 Canvas in modern browsers, and VML on IE 8 and below.
@@ -19,7 +33,7 @@ Canvas in modern browsers, and VML on IE 8 and below.
 ## Liviz.js
 An interactive Graphviz in javascript.
 
-## jsPlumb & Liviz.js demo
+## jsPlumb & Liviz.js demo (currently using the sfdp layout engine)
 - [Akikan! character relation diagram](http://lndb.info/light_novel/diagram/Akikan!)
 - [Strawberry Panic! character relation diagram](http://lndb.info/light_novel/diagram/Strawberry_Panic!)
 

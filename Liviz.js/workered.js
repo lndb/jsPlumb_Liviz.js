@@ -33,10 +33,7 @@ DEALINGS IN THE SOFTWARE.
 
 	var dotWorker = null;
 	var progressView = null;
-	//var graphsCtrl = null;
 	var stopGo = null;
-	//var startAnimationFunc = null;
-	//var errorSink;
 	var nodePosition = [];
 	var minPosition = Number.MAX_VALUE;
 	
@@ -73,10 +70,6 @@ DEALINGS IN THE SOFTWARE.
 	function afterErrorCheck(param) {
 		//errorSink.load(param);
 	}
-
-	function nextReady() {
-
-	}
 	
 	function afterSetupGVContext(param) {
 		//progressView.clearAll();
@@ -97,25 +90,12 @@ DEALINGS IN THE SOFTWARE.
 		
 		jsPlumb.repaintEverything();
 		
-		/*
-		var extractor = new JSViz.GraphExtractor();
-		var graphInfo;
-		if (param[0].type == "G") {
-			graphInfo = param.shift();
-		}
-		
-		extractor.extractFromJSON(param);
-		graphsCtrl.setDisplayGraphSize(extractor.g, graphInfo.displayWidth, graphInfo.displayHeight);
-		startAnimationFunc = function() {
-			graphsCtrl.setNewGraph(extractor.g, runOptions.slow, function(){
-				nextReady();
-			});
-		};
-		
-		if (!runOptions.prog) {
-			startAnimationFunc();
-		}
-		*/
+        // Use this only when using sfdp layout engine/algorithm.
+        // Hides progress canvas after initialization is over.
+        if(document.getElementById('layout-engine').innerHTML == "sfdp")
+        {
+			progressView.hideWithAnimation();
+        }
 	}
 
 	function recvProgress(j) {

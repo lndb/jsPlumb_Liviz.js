@@ -452,6 +452,12 @@
 <script type="text/javascript" src="Liviz.js/progress-model.js?v=2"></script>
 <script type="text/javascript" src="Liviz.js/stopgo.js?v=2"></script>
 
+<!-- The layout engine/algorithm to be used. Should be either dot or sfdp. -->
+<!-- To change from the dot layout engine to the sfdp layout engine, change the 
+	 following div's content from dot to sfdp, then disable the textarea that's right
+	 after it, and enable the disabled textarea.
+-->
+<div id="layout-engine" style="display: none;">dot</div>
 <textarea id="dot-src" style="display: none;">
 digraph chargraph {
 	node[shape=box];
@@ -469,6 +475,26 @@ digraph chargraph {
 	{rank=same; window30; window28; window29;}
 }
 </textarea>
+<!-- Enable this textarea for "sfdp" layout engine, and disable the above textarea
+	 Also change the content of the "layout-engine" div from dot to sfdp.
+<textarea id="dot-src" style="display: none;">
+digraph chargraph {
+	graph[layout=sfdp, splines=line, overlap=prism, repulsiveforce=12, sep=5, smoothing=avg_dist];
+	node[shape=box, margin=0];
+
+	window32 -> window14 [dir="both"];
+	window32 -> window28;
+	window32 -> window29;
+	window32 -> window30;
+	window32 -> window31 [dir="both"];
+	window30 -> window32;
+	window28 -> window32;
+	window29 -> window32;
+	{rank=same; window32;}
+	{rank=same; window30; window28; window29;}
+}
+</textarea>
+-->
 
 <div id="30_32_dialog" title="Relation of Aurora to Takatou Yuki" style="display: none;">
     <p>in love</p>

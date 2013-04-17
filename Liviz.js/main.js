@@ -4,7 +4,9 @@ if (!this.console) {
 	this.console = { log: function(a) { sendLog(a); } };
 }
 
-var IMPORT_BASE = ".";
+// The layout engine/algorithm to be used.
+// Should be either "dot" or "sfdp".
+var LAYOUT_ENGINE = "dot";
 window.EmscriptenModule = {noInitialRun: true};
 
 importScripts("./global-util.js?v=3");
@@ -12,7 +14,15 @@ importScripts("./stopgo.js?v=3");
 importScripts("./progress-model.js?v=3");
 importScripts("./graph-model.js?v=3");
 importScripts("./errorsink.js?v=3");
-importScripts("./em-dotgen.min.js?v=3");
+
+if(LAYOUT_ENGINE == "sfdp")
+{ // import sfdp layout engine
+    importScripts("./em-sfdpgen.min.js?v=3");
+}
+else
+{ // import dot layout engine
+    importScripts("./em-dotgen.min.js?v=3");
+}
 
 var emModule = null;
 var workerGlobal = this;
@@ -61,7 +71,8 @@ addEventListener("message", function(event){
 
 	switch(etype) {
 	case "init":
-		initDotgenWorker(); break;
+		initDotgenWorker();
+		break;
 	case "setWorkerSTDIN":
 		emModule.setStdinArray(arg0.split(/[\r\n]+/));
 		break;
