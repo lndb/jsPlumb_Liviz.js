@@ -479,8 +479,8 @@ digraph chargraph {
 	 Also change the content of the "layout-engine" div from dot to sfdp.
 <textarea id="dot-src" style="display: none;">
 digraph chargraph {
-	graph[layout=sfdp, splines=line, overlap=prism, repulsiveforce=12, sep=5, smoothing=avg_dist];
-	node[shape=box, margin=0];
+	graph[layout=sfdp, splines=line, overlap=prism, smoothing=avg_dist];
+	node[shape=box, margin=0, width=4, height=5, fixedsize=true];
 
 	window32 -> window14 [dir="both"];
 	window32 -> window28;
