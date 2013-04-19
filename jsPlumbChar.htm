@@ -462,7 +462,7 @@
 digraph chargraph {
 	node[shape=box];
 	node[margin=0,0,width=4,height=5];
-
+	
 	window32 -> window14 [dir="both"];
 	window32 -> window28;
 	window32 -> window29;
@@ -471,6 +471,7 @@ digraph chargraph {
 	window30 -> window32;
 	window28 -> window32;
 	window29 -> window32;
+	
 	{rank=same; window32;}
 	{rank=same; window30; window28; window29;}
 }
@@ -482,6 +483,16 @@ digraph chargraph {
 	graph[layout=sfdp, splines=line, overlap=prism, smoothing=avg_dist];
 	node[shape=box, margin=0, width=4, height=5, fixedsize=true];
 
+	subgraph clusterProtagonists {
+		window32;
+	}
+
+	subgraph clusterMainCharacters {
+		window30;
+		window28;
+		window29;
+	}
+
 	window32 -> window14 [dir="both"];
 	window32 -> window28;
 	window32 -> window29;
@@ -490,8 +501,6 @@ digraph chargraph {
 	window30 -> window32;
 	window28 -> window32;
 	window29 -> window32;
-	{rank=same; window32;}
-	{rank=same; window30; window28; window29;}
 }
 </textarea>
 -->
