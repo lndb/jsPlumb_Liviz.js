@@ -36,6 +36,10 @@ An interactive Graphviz in javascript.
 ## jsPlumb & Liviz.js demo (currently using the sfdp layout engine)
 - [Akikan! character relation diagram](http://lndb.info/light_novel/diagram/Akikan!)
 - [Strawberry Panic! character relation diagram](http://lndb.info/light_novel/diagram/Strawberry_Panic!)
+- [Hidan no Aria character relation diagram](http://lndb.info/light_novel/diagram/Hidan_no_Aria)
+- [Sasami-san@Ganbaranai character relation diagram](http://lndb.info/light_novel/diagram/Sasami-san@Ganbaranai)
+- [Haiyore! Nyaruko-san character relation diagram](http://lndb.info/light_novel/diagram/Haiyore!_Nyaruko-san)
+- [Mushi to Medama character relation diagram](http://lndb.info/light_novel/diagram/Mushi_to_Medama)
 
 ## jsPlumb's License
 All 1.x.x versions of jsPlumb are dual-licensed under both MIT and GPL version 2.
