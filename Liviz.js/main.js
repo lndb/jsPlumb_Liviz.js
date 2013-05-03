@@ -5,7 +5,7 @@ if (!this.console) {
 }
 
 // The layout engine/algorithm to be used.
-// Should be either "dot" or "sfdp".
+// Should be either: "dot", "fdp", "sfdp", "neato", "twopi", or "circo".
 var LAYOUT_ENGINE = "dot";
 window.EmscriptenModule = {noInitialRun: true};
 
@@ -15,9 +15,25 @@ importScripts("./progress-model.js?v=3");
 importScripts("./graph-model.js?v=3");
 importScripts("./errorsink.js?v=3");
 
-if(LAYOUT_ENGINE == "sfdp")
+if(LAYOUT_ENGINE == "fdp")
+{ // import fdp layout engine
+    importScripts("./em-fdpgen.min.js?v=3");
+}
+else if(LAYOUT_ENGINE == "sfdp")
 { // import sfdp layout engine
     importScripts("./em-sfdpgen.min.js?v=3");
+}
+else if(LAYOUT_ENGINE == "neato")
+{ // import neato layout engine
+    importScripts("./em-neatogen.min.js?v=3");
+}
+else if(LAYOUT_ENGINE == "twopi")
+{ // import twopi layout engine
+    importScripts("./em-twopigen.min.js?v=3");
+}
+else if(LAYOUT_ENGINE == "circo")
+{ // import circo layout engine
+    importScripts("./em-circogen.min.js?v=3");
 }
 else
 { // import dot layout engine

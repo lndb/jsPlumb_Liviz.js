@@ -14,15 +14,19 @@ This combination was worked on for the [LNDB.info](http://lndb.info/) site as a 
 
 Update:
 
-I have re-compiled GraphViz's code for the sfdp layout engine. The source code has been added under the src folder. Follow the same steps mentioned [here](https://github.com/gyuque/livizjs) to compile the code...
+I have re-compiled GraphViz's code for the fdp, sfdp, neato, twopi, and circo layout engines. The source code has been added under the src folder. Follow the same steps mentioned [here](https://github.com/gyuque/livizjs) to compile the code...
 
-There are currently two available layout engines:
+There are currently six available layout engines:
 - [dot](http://www.graphviz.org/pdf/dot.1.pdf) (via the em-dotgen.min.js javascript file)
+- [fdp](http://www.graphviz.org/pdf/fdp.1.pdf) (via the em-fdpgen.min.js javascript file)
 - [sfdp](http://www.graphviz.org/pdf/sfdp.1.pdf) (via the em-sfdpgen.min.js javascript file)
+- [neato](http://www.graphviz.org/pdf/neato.1.pdf) (via the em-neatogen.min.js javascript file)
+- [twopi](http://www.graphviz.org/pdf/twopi.1.pdf) (via the em-twopigen.min.js javascript file)
+- [circo](http://www.graphviz.org/pdf/circo.1.pdf) (via the em-circogen.min.js javascript file)
 
-The example here uses the dot layout engine, but to use the sfdp layout engine follow these steps:
-- In the jsPlumbChar.htm file, change the content of the div with the id "layout-engine" from dot to sfdp, and then disable the textarea that's right after it, and enable the disabled textarea that follows.
-- In the main.js file, change the value of the LAYOUT_ENGINE variable from dot to sfdp.
+The example here uses the dot layout engine, but to use other layout engines (fdp, sfdp, neato, twopi, or circo) follow these steps:
+- In the jsPlumbChar.htm file, change the content of the div with the id "layout-engine" from dot to the desired layout engine (fdp, sfdp, neato, twopi, or circo).
+- In the main.js file, change the value of the LAYOUT_ENGINE variable from dot to the same layout engine you picked in the above step.
 
 More info at the [LNDB.info forum](http://forums.lndb.info/showthread.php?tid=43&pid=185#pid185).
 

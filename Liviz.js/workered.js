@@ -90,9 +90,13 @@ DEALINGS IN THE SOFTWARE.
 		
 		jsPlumb.repaintEverything();
 		
-        // Use this only when using sfdp layout engine/algorithm.
+        // Use this only when using fdp/sfdp/neato/twopi/circo layout engines/algorithms.
         // Hides progress canvas after initialization is over.
-        if(document.getElementById('layout-engine').innerHTML == "sfdp")
+        if(document.getElementById('layout-engine').innerHTML == "fdp" ||
+		   document.getElementById('layout-engine').innerHTML == "sfdp" ||
+		   document.getElementById('layout-engine').innerHTML == "neato" ||
+		   document.getElementById('layout-engine').innerHTML == "twopi" ||
+		   document.getElementById('layout-engine').innerHTML == "circo")
         {
 			progressView.hideWithAnimation();
         }
