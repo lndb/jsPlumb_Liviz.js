@@ -226,19 +226,23 @@ if (!window['JSViz']) { window.JSViz = {}; }
 			var injectList = [additional];
 			for (var nodeAddr in this.g.nodeMap) {
 				var nd = this.g.nodeMap[nodeAddr];
-				injectList.push({
-					type: "N",
-					address: nd.address,
-					name: nd.name,
-					x: nd.x,
-					y: nd.y,
-					w: nd.w,
-					h: nd.h,
-					fontSize: nd.fontSize,
-					penWidth: nd.penWidth,
-					nSides: nd.nSides,
-					nPeripheries: nd.nPeripheries
-				});
+				
+				if(!!nd)
+				{
+					injectList.push({
+						type: "N",
+						address: nd.address,
+						name: nd.name,
+						x: nd.x,
+						y: nd.y,
+						w: nd.w,
+						h: nd.h,
+						fontSize: nd.fontSize,
+						penWidth: nd.penWidth,
+						nSides: nd.nSides,
+						nPeripheries: nd.nPeripheries
+					});
+				}
 			}
 
 			for (var ei in this.g.edgeList) {

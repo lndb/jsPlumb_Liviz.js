@@ -146,7 +146,7 @@
 
 /* for clusters */
 #define		CL_BACK		10	/* cost of backward pointing edge */
-#define		CL_OFFSET	8	/* margin of cluster box in PS points */
+#define		CL_OFFSET	80	/* margin of cluster box in PS points */
 #ifndef MSWIN32
 #define		CL_CROSS	1000	/* cost of cluster skeleton edge crossing */
 #else

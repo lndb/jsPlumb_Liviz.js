@@ -145,9 +145,13 @@ function runDotLayout() {
 	for (var i in extractor.g.nodeMap)
 	{
 		node = extractor.g.nodeMap[i];
-		nodeNameMap[node.name] = node;
 		
-		initializeNodePosition(JSON.stringify({"name": node.name, "x": node.sx, "y": node.sy}));
+		if(!!node)
+		{
+			nodeNameMap[node.name] = node;
+			
+			initializeNodePosition(JSON.stringify({"name": node.name, "x": node.sx, "y": node.sy}));
+		}
 	}
 	
 	var ginfo = {

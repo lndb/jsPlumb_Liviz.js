@@ -19,7 +19,7 @@ padding:1em;font-family:helvetica;
 background-color:white;
 color:#333;
 }
-.menu,.renderMode { 
+.menu { 
 border-radius:0.5em;
 	position:fixed;
 	top:1em;
@@ -35,24 +35,6 @@ border-radius:0.5em;
 }
 .menu {
 	left:1em;
-}
-.renderMode {
-right:1em;
-top:1em;
-width:11em;
-padding-top:0.1em;
-padding-bottom:0.5em;
-
-}
-.renderMode ul {
-padding-left:1em;
-}
-.renderMode ul li {
-list-style-type:none;
-}
-.renderMode h5 {
-margin-top:3px;
-margin-bottom:0.7em;
 }
 a {text-decoration:none;
 color:#01a3c6;
@@ -82,12 +64,13 @@ background-color:#f0f0f0;
 }
 #explanation { 
 	cursor:drag;
+	cursor:move;
 	background-color:white;
 	color:black;
 	border:0.25em solid #ddd; 
 	position:absolute;
 	right:1em;
-	top:7em;
+	top:1em;
 	width:32em;
 	font-size:90%;
 	-moz-border-radius:1em;
