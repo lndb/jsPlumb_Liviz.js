@@ -44,7 +44,7 @@ An interactive Graphviz in javascript.
 - [Sasami-san@Ganbaranai character relation diagram](http://lndb.info/light_novel/diagram/Sasami-san@Ganbaranai)
 - [Haiyore! Nyaruko-san character relation diagram](http://lndb.info/light_novel/diagram/Haiyore!_Nyaruko-san)
 - [Mushi to Medama character relation diagram](http://lndb.info/light_novel/diagram/Mushi_to_Medama)
-- [Kyoukai Senjou no Horizon](http://lndb.info/light_novel/Kyoukai_Senjou_no_Horizon)
+- [Kyoukai Senjou no Horizon character relation diagram](http://lndb.info/light_novel/Kyoukai_Senjou_no_Horizon)
 
 ## jsPlumb's License
 All 1.x.x versions of jsPlumb are dual-licensed under both MIT and GPL version 2.
